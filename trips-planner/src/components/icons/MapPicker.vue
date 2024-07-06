@@ -14,6 +14,10 @@
     </l-map>
  
     <div class="frame">
+      <div class="data">
+    Total Distance: {{ totalDistance.toFixed(2) }} km
+      </div>
+ 
 <div v-if="distances.length" class="data">
       <div v-for="(distance, index) in distances" :key="index" class="">
         <ul class="dist">

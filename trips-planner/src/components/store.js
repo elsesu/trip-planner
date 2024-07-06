@@ -93,9 +93,17 @@ export const store = createStore({
     }, getTotalDistance(state) {
       let totalDistance = 0;
       for (let i = 1; i < state.locations.length; i++) {
-        totalDistance += DistanceBetween(state.locations[i - 1], state.locations[i]);
+        const coords1 = {
+          lat: state.locations[i - 1].Latitude,
+          lng: state.locations[i - 1].Longitude,
+        };
+        const coords2 = {
+          lat: state.locations[i].Latitude,
+          lng: state.locations[i].Longitude,
+        };
+        totalDistance += DistanceBetween(coords1, coords2);
       }
       return totalDistance;
-    }
+    },
   }
 })
