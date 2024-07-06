@@ -1,13 +1,13 @@
 <template>
   <div class="form-div">
-    <h1 class="text-green-500">This is an about page</h1>
+    <h1 class="text-red-500 text-3xl font-extrabold">This is an about page</h1>
     <h1>Road trip planner</h1>
-    <p> <span>Introduction</span> <br>
+    <p class="p-tags"> <span>Introduction</span> <br>
 In this project, you’ll give users the opportunity to list out the destinations they want to visit, let 
 users order them, and display the best route between destinations. There are many ways you can 
 enhance this project and share it with friends and family. Depending on how much extra challenge 
 you take on, this project should take around 20 hours.</p>
-<p>Read the following instructions below, before implementation. 
+<p class="p-tags">Read the following instructions below, before implementation. 
 • Your code should be optimized and easy to understand 
 • Use any of the programming languages listed below to achieve the project
 • HTML 
@@ -51,6 +51,14 @@ purpose of a demo.</p>
     min-height: 100vh;
     display: flex;
     align-items: center;
+  }
+
+  .p-tags{
+    padding: 7px;
+    color: white;
+    text-align: justify;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
   }
 }
 </style>
