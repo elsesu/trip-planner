@@ -32,6 +32,7 @@ const decrement = () => {
         <RouterLink to="/" class="navs">Home</RouterLink>
         <RouterLink to="/about" class="navs">About</RouterLink>
         <RouterLink to="/destinations" class="navs">Destinations</RouterLink>
+     
       </nav>
   
   </header>
@@ -39,6 +40,8 @@ const decrement = () => {
 
   <RouterView />
 </div>
+
+
  
 </template>
 

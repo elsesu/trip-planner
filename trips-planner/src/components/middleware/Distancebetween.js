@@ -1,3 +1,4 @@
+
 export const DistanceBetween = (coords1, coords2) => {
   function toRad(x) {
     return x * Math.PI / 180;
@@ -12,5 +13,10 @@ export const DistanceBetween = (coords1, coords2) => {
   const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
             Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  return R * c;
-  }
+  const distance = R * c; // distance in km
+
+  const timeInMinutes = distance * 10; // 1 km = 10 minutes
+
+  return { distance, timeInMinutes };
+}
+

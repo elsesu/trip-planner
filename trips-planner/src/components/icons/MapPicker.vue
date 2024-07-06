@@ -15,13 +15,14 @@
  
     <div class="frame">
       <div class="data">
-    Total Distance: {{ totalDistance.toFixed(2) }} km
+   <div>Total Distance: {{ totalDistance.toFixed(2) }} km</div>
+      <div>Total Time: {{ totalTime.toFixed(2) }} minutes</div>
       </div>
  
 <div v-if="distances.length" class="data">
       <div v-for="(distance, index) in distances" :key="index" class="">
         <ul class="dist">
-          <li> Distance from Position ({{ index + 1 }}) {{ distance.toFixed(2) }} km</li>
+          <li> Distance from Position ({{ index + 1 }}) {{ distance.toFixed(2) }}  km <br> And Time Required:</li>
         </ul>
        
      
@@ -50,6 +51,7 @@ import { LocationInfo } from '../models/LocationInfo'
 import { PointTuple } from 'leaflet'
 import { useStore } from 'vuex'
 import {LatLon} from '../models/LatLon'
+import { DistanceBetween } from '../middleware/Distancebetween'
 
 
 const store = useStore()
@@ -58,30 +60,26 @@ const getWsUrl = (): string => {
   return 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 }
 
-const getLatLon = (item: LocationInfo): PointTuple => {
+const getLatLon = (item: LatLon): [number, number] => {
   return [item.Latitude, item.Longitude]
 }
 
-const getPolygonArea = (): PointTuple[] => {
+const getPolygonArea = (): [number, number][] => {
   return store.getters.getPolygon.map((coordinate: LatLon) => [coordinate.Latitude, coordinate.Longitude])
 }
 
 onMounted(() => {
   nextTick(() => {
-    /* if (map.value) {
-      // How to ref a reference to map?!
-    } */
+    // Custom logic after mount
   })
 })
 
 const zoom = ref(15)
-const center = ref<PointTuple>([52.09895303362214, 4.2637035702751405])
+const center = ref<[number, number]>([52.09895303362214, 4.2637035702751405])
 const map = ref<typeof LMap>()
 const fg = ref<typeof LFeatureGroup | null>(null)
 
 const locations = computed(() => store.getters.getLocations)
-const distances = computed(() => store.getters.getDistances)
-console.log(locations, distances)
 
 const addMarker = (e: { latlng: { lat: number; lng: number } }) => {
   const newLocation = {
@@ -92,9 +90,24 @@ const addMarker = (e: { latlng: { lat: number; lng: number } }) => {
   store.dispatch('addNewLocation', newLocation)
 }
 
+const totalDistanceAndTime = computed(() => store.getters.getTotalDistanceAndTime)
+const totalDistance = computed(() => totalDistanceAndTime.value.totalDistance)
+const totalTime = computed(() => totalDistanceAndTime.value.totalTime)
 
-// Computed property to get the total distance
-const totalDistance = computed(() => store.getters.getTotalDistance);
+const distances = computed(() => {
+  const dists = []
+  for (let i = 1; i < store.state.locations.length; i++) {
+    const { distance } = DistanceBetween(
+      { lat: store.state.locations[i - 1].Latitude, lng: store.state.locations[i - 1].Longitude },
+      { lat: store.state.locations[i].Latitude, lng: store.state.locations[i].Longitude }
+    )
+    dists.push(distance)
+  }
+  return dists
+})
+
+console.log('Total Distance:', totalDistance.value, 'Total Time:', totalTime.value)
+console.log('Distances:', distances.value)
 
 </script>
 
@@ -137,5 +150,6 @@ const totalDistance = computed(() => store.getters.getTotalDistance);
   align-items: center;
   gap: 20px;
     background: rgb(44, 168, 35);
+ 
 }
 </style>

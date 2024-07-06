@@ -27,6 +27,7 @@ const router = createRouter({
       component: () => import('../views/Destinations.vue')
     },
 
+
   ]
 })
 

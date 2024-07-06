@@ -3,14 +3,20 @@
     <h1 class="choose">Choose your destination</h1>
     <form action="" class="form">
       <div class="input-div"> <label for="currentCountry" >Enter Travel Destination Below:</label> <br>
-        <input type="text"  v-model="currentCountry" @keyup="handleKeyUp" class="inputs" placeholder="Enter country"></div>
-        
-        <div v-for="country in countries" :key="country">
+         <input type="text"  v-model="currentCountry" @keyup="handleKeyUp" class="inputs" placeholder="Enter country"></div>
+
+      <VueDraggableNext  v-model="countries" @end="updateLocalStorage" class="dragArea list-group w-full"> 
+         <div v-for="country in countries" :key="country">
             <div class="voolad">
           {{ country}}
           <div @click="removeCountry(country)" class="x-com">X</div>
             </div>
         </div>
+        
+         </VueDraggableNext>
+     
+        
+       
 
 <br>  <div class="form-div">
   <button @click.prevent="addCountry" class="btn">Add</button>
@@ -26,6 +32,7 @@
 import {ref} from 'vue'
 import { useStore } from 'vuex'
 import { computed } from 'vue'
+import { VueDraggableNext } from 'vue-draggable-next'
 
 const store = useStore()
 

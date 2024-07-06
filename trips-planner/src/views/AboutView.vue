@@ -2,7 +2,7 @@
   <div class="form-div">
     <h1 class="text-red-500 text-3xl font-extrabold">This is an about page</h1>
     <h1>Road trip planner</h1>
-    <p class="p-tags"> <span>Introduction</span> <br>
+    <p class="p-tags"> <span class="spans">Introduction</span> <br>
 In this project, you’ll give users the opportunity to list out the destinations they want to visit, let 
 users order them, and display the best route between destinations. There are many ways you can 
 enhance this project and share it with friends and family. Depending on how much extra challenge 
@@ -42,8 +42,16 @@ The codebase should be uploaded to a Github repository and the URL shared via em
 responding to this email. The repository must contain a README.md file describing how to 
 setup/deploy the application. You may also deploy the application on a free hosting service for the 
 purpose of a demo.</p>
+
   </div>
 </template>
+
+<script setup>
+
+
+
+</script>
+
 
 <style>
 @media (min-width: 1024px) {
@@ -59,6 +67,11 @@ purpose of a demo.</p>
     text-align: justify;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
+  }
+  .spans{
+    color: black;
+     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-size: 30px;
   }
 }
 </style>

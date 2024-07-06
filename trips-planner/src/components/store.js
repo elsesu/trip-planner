@@ -13,6 +13,12 @@ const loadFromLocalStorage = () => {
 
 export const store = createStore({
   state: {
+    list: [
+      { name: 'John', id: 1 },
+      { name: 'Joao', id: 2 },
+      { name: 'Jean', id: 3 },
+      { name: 'Gerard', id: 4 },
+    ],
     currentCountry: '',
     countries: loadFromLocalStorage(),
     locations: [
@@ -23,7 +29,6 @@ export const store = createStore({
       },
     ],
     polygon: [
-      
       {
         Latitude: 52.099738624938254,
         Longitude: 4.253472755089291
@@ -32,6 +37,9 @@ export const store = createStore({
     distances: []
   },
   mutations: {
+    setList(state, newList) {
+      state.list = newList;
+    },
     setCurrentCountry(state, country) {
       state.currentCountry = country
     },
@@ -56,7 +64,7 @@ export const store = createStore({
       state.locations.push(location)
       if (state.locations.length > 1) {
         const lastLocation = state.locations[state.locations.length - 2]
-        const distance = DistanceBetween(
+        const { distance } = DistanceBetween(
           { lat: lastLocation.Latitude, lng: lastLocation.Longitude },
           { lat: location.Latitude, lng: location.Longitude }
         )
@@ -65,6 +73,9 @@ export const store = createStore({
     }
   },
   actions: {
+    updateList({ commit }, newList) {
+      commit('setList', newList);
+    },
     updateLocations({ commit }, locations) {
       commit('setLocations', locations)
     },
@@ -76,6 +87,9 @@ export const store = createStore({
     }
   },
   getters: {
+    getList(state) {
+      return state.list;
+    },
     getCountries(state) {
       return state.countries
     },
@@ -88,22 +102,18 @@ export const store = createStore({
     getPolygon(state) {
       return state.polygon
     },
-    getDistances(state) {
-      return state.distances
-    }, getTotalDistance(state) {
+    getTotalDistanceAndTime(state) {
       let totalDistance = 0;
+      let totalTime = 0;
       for (let i = 1; i < state.locations.length; i++) {
-        const coords1 = {
-          lat: state.locations[i - 1].Latitude,
-          lng: state.locations[i - 1].Longitude,
-        };
-        const coords2 = {
-          lat: state.locations[i].Latitude,
-          lng: state.locations[i].Longitude,
-        };
-        totalDistance += DistanceBetween(coords1, coords2);
+        const { distance, timeInMinutes } = DistanceBetween(
+          { lat: state.locations[i - 1].Latitude, lng: state.locations[i - 1].Longitude },
+          { lat: state.locations[i].Latitude, lng: state.locations[i].Longitude }
+        );
+        totalDistance += distance;
+        totalTime += timeInMinutes;
       }
-      return totalDistance;
-    },
+      return { totalDistance, totalTime };
+    }
   }
 })
