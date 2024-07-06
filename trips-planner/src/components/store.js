@@ -64,11 +64,11 @@ export const store = createStore({
       state.locations.push(location)
       if (state.locations.length > 1) {
         const lastLocation = state.locations[state.locations.length - 2]
-        const { distance } = DistanceBetween(
+        const { distance, timeInMinutes } = DistanceBetween(
           { lat: lastLocation.Latitude, lng: lastLocation.Longitude },
           { lat: location.Latitude, lng: location.Longitude }
         )
-        state.distances.push(distance)
+        state.distances.push({ distance, timeInMinutes }) // Store both distance and time
       }
     }
   },
