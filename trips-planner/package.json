@@ -12,6 +12,7 @@
     "@fawmi/vue-google-maps": "^0.9.79",
     "pinia": "^2.1.7",
     "quasar": "^2.16.5",
+
     "vue": "^3.4.29",
     "vue-draggable-next": "^2.2.1",
     "vue-router": "^4.3.3",
