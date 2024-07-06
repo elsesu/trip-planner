@@ -93,7 +93,7 @@ export const store = createStore({
     }, getTotalDistance(state) {
       let totalDistance = 0;
       for (let i = 1; i < state.locations.length; i++) {
-        totalDistance += distanceBetween(state.locations[i - 1], state.locations[i]);
+        totalDistance += DistanceBetween(state.locations[i - 1], state.locations[i]);
       }
       return totalDistance;
     }
