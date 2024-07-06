@@ -1,18 +1,14 @@
 {
     "builds": [
       {
-        "src": "src/main.js",
-        "use": "@vercel/static-build",
+        "src": "src",
+        "use": "@vercel/build-pack-node@latest",
+        "env": {
+          "NODE_ENV": "production"
+        },
         "config": {
-          "distDir": "dist"
+          "buildCommand": "vue-cli-service build dist"  
         }
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/index.html"
       }
     ]
   }
-  
