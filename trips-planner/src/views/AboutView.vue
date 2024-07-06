@@ -1,7 +1,7 @@
 <template>
   <div class="form-div">
-    <h1 class="text-red-500 text-3xl font-extrabold">This is an about page</h1>
-    <h1>Road trip planner</h1>
+    <h1 class="text-gray-500 text-3xl font-extrabold">This is an about page</h1>
+    <h1 class="text-gray-500 text-3xl font-extrabold">Road trip planner</h1>
     <p class="p-tags"> <span class="spans">Introduction</span> <br>
 In this project, you’ll give users the opportunity to list out the destinations they want to visit, let 
 users order them, and display the best route between destinations. There are many ways you can 
