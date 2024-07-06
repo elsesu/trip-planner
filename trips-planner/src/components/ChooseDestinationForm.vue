@@ -3,7 +3,7 @@
     <h1 class="choose">Choose your destination</h1>
     <form action="" class="form">
       <div class="input-div"> <label for="currentCountry" >Enter Travel Destination Below:</label> <br>
-         <input type="text"  v-model="currentCountry" @keyup="handleKeyUp" class="inputs" placeholder="Enter country"></div>
+         <input type="text"  v-model="currentCountry" @keyup="handleKeyUp" class="inputs" placeholder="Type in Country Name"></div>
 
       <VueDraggableNext  v-model="countries" @end="updateLocalStorage" class="dragArea list-group w-full"> 
          <div v-for="country in countries" :key="country">
@@ -113,7 +113,9 @@ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: white;
     padding: 10px;
     border: none;
-    width: 200px;
+    width: 300px;
+
+    border: 1px solid white;
  
 }
 .btn{
