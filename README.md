@@ -1,4 +1,8 @@
+the project has 3 routes #Home #about #destinastions
+The #home component you can type in your destinations and click add and it is stored on the local storage and also displayed on screen (please Note the add location is not computed) they are only added statically, still in the Home Component you have the leaflet map which on tap of any location on the map it prints out the GeoCoordinates and the distance as well we the total time taken, (please note to get actual city names on map i will need to use the google Api on google console of which i dont have access because Google has somewhat rejected my naira debit card, so currently i can only fetch coordinates.
 
+The #About Component is just static Text
+The Destinations is where i used The Watcheffect to display all saved locations
 ### 
 About: basically the entire project was built and powered by the vuex state management library and
 of course router for navigation, the project like most modern framework structure is component based 
