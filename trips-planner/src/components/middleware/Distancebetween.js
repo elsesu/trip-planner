@@ -1,4 +1,4 @@
-
+//function to handle calculations of distance and time taken
 export const DistanceBetween = (coords1, coords2) => {
   function toRad(x) {
     return x * Math.PI / 180;
