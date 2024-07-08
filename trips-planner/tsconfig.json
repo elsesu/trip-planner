@@ -1,0 +1,7 @@
+{
+    "compilerOptions": {
+      "types": ["leaflet"],
+      // other options...
+    }
+  }
+  

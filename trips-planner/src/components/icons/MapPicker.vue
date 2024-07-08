@@ -1,17 +1,17 @@
 <template>
 <div class="map-margin"><div class="mapContainer">
-    <l-map ref="map" :zoom="zoom" :center="center" @click="addMarker" :useGlobalLeaflet="false">
-      <l-tile-layer :url="getWsUrl()" layer-type="base" name="OpenStreetMap"
-        attribution="© sesugh Asa contributors"></l-tile-layer>
-      <l-feature-group ref="fg">
-        <l-marker v-for="loc in locations" :lat-lng="getLatLon(loc)" :key="loc.Title">
-          <l-tooltip>
-            {{ loc.Title }}
-          </l-tooltip>
-        </l-marker>
-      </l-feature-group>
-      <l-polygon :lat-lngs="getPolygonArea()" color="red" :fill="true" :fill-opacity="0.2" fill-color="red" />
-    </l-map>
+     <l-map ref="map" :zoom="zoom" :center="center" @click="addMarker" :useGlobalLeaflet="false">
+        <l-tile-layer :url="getWsUrl()" layer-type="base" name="OpenStreetMap"
+                      attribution="© sesugh Asa contributors"></l-tile-layer>
+        <l-feature-group ref="fg">
+          <l-marker v-for="loc in locations" :lat-lng="getLatLon(loc)" :key="loc.Title">
+            <l-tooltip>
+              {{ loc.Title }}
+            </l-tooltip>
+          </l-marker>
+        </l-feature-group>
+        <l-polygon :lat-lngs="getPolygonArea()" color="red" :fill="true" :fill-opacity="0.2" fill-color="red"/>
+      </l-map>
  
     <div class="frame">
       <div class="data">
@@ -52,6 +52,12 @@ import { PointTuple } from 'leaflet'
 import { useStore } from 'vuex'
 import {LatLon} from '../models/LatLon'
 import { DistanceBetween } from '../middleware/Distancebetween'
+import 'leaflet-control-geocoder/dist/Control.Geocoder.css'
+import 'leaflet-control-geocoder'
+import L from 'leaflet'
+import 'leaflet-search/dist/leaflet-search.min.css';
+  import LControlSearch from 'leaflet-search';
+  import 'leaflet-search';
 
 
 const store = useStore()
@@ -69,10 +75,10 @@ const getPolygonArea = (): [number, number][] => {
 }
 
 onMounted(() => {
-  nextTick(() => {
-    // Custom logic after mount
-  })
+  
 })
+
+ 
 
 const zoom = ref(15)
 const center = ref<[number, number]>([52.09895303362214, 4.2637035702751405])

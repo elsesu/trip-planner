@@ -11,6 +11,15 @@ const loadFromLocalStorage = () => {
   return countries ? JSON.parse(countries) : [];
 }
 
+const saveLocationsToLocalStorage = (locations) => {
+  localStorage.setItem('locations', JSON.stringify(locations));
+}
+
+const loadLocationsFromLocalStorage = () => {
+  const locations = localStorage.getItem('locations');
+  return locations ? JSON.parse(locations) : [];
+}
+
 export const store = createStore({
   state: {
     list: [
@@ -21,13 +30,8 @@ export const store = createStore({
     ],
     currentCountry: '',
     countries: loadFromLocalStorage(),
-    locations: [
-      {
-        Latitude: 52.103839,
-        Longitude: 4.252742,
-        Title: 'Point 1'
-      },
-    ],
+    locations: loadLocationsFromLocalStorage(),
+   
     polygon: [
       {
         Latitude: 52.099738624938254,
@@ -62,13 +66,15 @@ export const store = createStore({
     },
     addLocation(state, location) {
       state.locations.push(location)
+      saveLocationsToLocalStorage(state.locations);
       if (state.locations.length > 1) {
         const lastLocation = state.locations[state.locations.length - 2]
         const { distance, timeInMinutes } = DistanceBetween(
           { lat: lastLocation.Latitude, lng: lastLocation.Longitude },
           { lat: location.Latitude, lng: location.Longitude }
         )
-        state.distances.push({ distance, timeInMinutes }) // Store both distance and time
+        state.distances.push({ distance, timeInMinutes }) 
+      
       }
     }
   },

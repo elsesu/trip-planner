@@ -3,7 +3,7 @@
 
 <template>
 <div class="form-div">
-    <h2 class="choose">These Are your favourite Destinations</h2>
+    <h2 class="choose">These Are your favourite Countries</h2>
     <div v-if="destinations.length">
       <VueDraggableNext v-model="destinations" @end="updateLocalStorage" class="dragArea list-group w-full">
         <li v-for="destination in destinations" :key="destination" class="voolad">
@@ -13,6 +13,17 @@
     </div>
     <div v-else class="form-div">
       <h1 class="choose">Oops, you haven't added a destination yet</h1>
+
+    </div>
+
+    <div class="form-div">
+        <h2 class="choose">These Are your favourite Destinations</h2></div>
+ <div v-if="locations.length">
+      <VueDraggableNext v-model="locations" @end="updateLocalStorage" class="dragArea list-group w-full">
+             <li v-for="(location, index) in formattedLocations" :key="index" class="voolad">
+          {{ location }}
+        </li>
+      </VueDraggableNext>
     </div>
   </div>
 </template>
@@ -26,8 +37,10 @@ import { computed } from 'vue'
 
 // Define a ref to hold the destinations
 const destinations = ref([])
+const locations = ref([])
 
-// Function to fetch destinations from localStorage
+
+// Function to fetch destinations 
 const fetchDestinations = () => {
   const storedDestinations = localStorage.getItem('countries')
   if (storedDestinations) {
@@ -37,14 +50,32 @@ const fetchDestinations = () => {
   }
 }
 
+const fetchLocations =()=>{
+  const storedLocations = localStorage.getItem('locations')
+  if(storedLocations){
+    locations.value = JSON.parse(storedLocations)
+  } else{
+    locations.value = []
+  }
+}
+const formattedLocations = computed(() => {
+  return locations.value.map(location => {
+       return `${location.Title}: Latitude: ${location.Latitude}, Longitude: ${location.Longitude}`;
+  });
+});
+
 // Function to update localStorage when destinations change
 const updateLocalStorage = () => {
   localStorage.setItem('countries', JSON.stringify(destinations.value))
+    localStorage.setItem('locations', JSON.stringify(locations.value))
 }
+
+
 
 // Use watchEffect to reactively fetch destinations when localStorage changes
 watchEffect(() => {
   fetchDestinations()
+  fetchLocations()
 })
 </script>
 
