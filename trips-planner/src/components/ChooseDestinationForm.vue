@@ -1,6 +1,6 @@
 <template>
   <div class="form-div">
-    <h1 class="choose">Choose your destination</h1>
+    <h1 class="choose">Choose your destination 🚘</h1>
     <form action="" class="form">
       <div class="input-div"> <label for="currentCountry" >Enter Travel Destination Below:</label> <br>
          <input type="text"  v-model="currentCountry" @keyup="handleKeyUp" class="inputs" placeholder="Type in Country Name"></div>
@@ -9,7 +9,7 @@
          <div v-for="country in countries" :key="country">
             <div class="voolad">
           {{ country}}
-          <div @click="removeCountry(country)" class="x-com">X</div>
+          <div @click="removeCountry(country)" class="x-com">❌</div>
             </div>
         </div>
         
@@ -19,7 +19,7 @@
        
 
 <br>  <div class="form-div">
-  <button @click.prevent="addCountry" class="btn">Add</button>
+  <button @click.prevent="addCountry" class="btn">Add+ 󠀫</button>
 </div>
       
     </form>

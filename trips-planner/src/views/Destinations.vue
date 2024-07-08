@@ -3,7 +3,7 @@
 
 <template>
 <div class="form-div">
-    <h2 class="choose">These Are your favourite Countries</h2>
+    <h2 class="choose">These Are your favourite Countries 🌍</h2>
     <div v-if="destinations.length">
       <VueDraggableNext v-model="destinations" @end="updateLocalStorage" class="dragArea list-group w-full">
         <li v-for="destination in destinations" :key="destination" class="voolad">
@@ -12,12 +12,12 @@
       </VueDraggableNext>
     </div>
     <div v-else class="form-div">
-      <h1 class="choose">Oops, you haven't added a Country yet</h1>
+      <h1 class="choose">Oops, you haven't added a Country yet 😬</h1>
     </div>
 
 
     <div class="form-div">
-      <h2 class="choose">These Are your favourite Destinations</h2></div>
+      <h2 class="choose">These Are your favourite Destinations 🚘</h2></div>
  <div v-if="locations.length">
       <VueDraggableNext v-model="locations" @end="updateLocalStorage" class="dragArea list-group w-full">
              <li v-for="(location, index) in formattedLocations" :key="index" class="voolad">
@@ -26,7 +26,7 @@
       </VueDraggableNext>
     </div>
     <div v-else class="form-div">
-      <h1 class="choose">Oops, you haven't added a destination yet</h1>
+      <h1 class="choose">Oops, you haven't added a destination yet 😬</h1>
     </div>
   </div>
 </template>

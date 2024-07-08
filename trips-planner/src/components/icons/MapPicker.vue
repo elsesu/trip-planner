@@ -15,14 +15,14 @@
  
     <div class="frame">
       <div class="data">
-   <div>Total Distance: {{ totalDistance.toFixed(2) }} km</div>
-      <div>Total Time: {{ totalTime.toFixed(2) }} minutes</div>
+   <div>Total Distance: 🚘 {{ totalDistance.toFixed(2) }} km</div>
+      <div>Total Time: 🕒 {{ totalTime.toFixed(2) }} minutes</div>
       </div>
  
 <div v-if="distances.length" class="data">
       <div v-for="(distance, index) in distances" :key="index" class="">
         <ul class="dist">
-          <li> Distance from Position ({{ index + 1 }}) {{ distance.toFixed(2) }}  km <br> And Time Required:</li>
+          <li> Distance from Position 📍 ({{ index + 1 }}) {{ distance.toFixed(2) }}  km <br> And Time Required:</li>
         </ul>
        
      
