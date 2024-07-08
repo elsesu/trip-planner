@@ -12,7 +12,7 @@
       </VueDraggableNext>
     </div>
     <div v-else class="form-div">
-      <h1 class="choose">Oops, you haven't added a destination yet</h1>
+      <h1 class="choose">Oops, you haven't added a Country yet</h1>
     </div>
 
 
