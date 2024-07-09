@@ -1,6 +1,7 @@
 <template>
   <div class="form-div">
-    <h1 class="choose">This is an about page</h1>
+    <div class="tail-p">
+ <h1 class="choose">This is an about page</h1>
     <h1 class="text-gray-500 text-3xl font-extrabold">Road trip planner</h1>
     <p class="p-tags"> <span class="spans">Introduction</span> <br>
 In this project, you’ll give users the opportunity to list out the destinations they want to visit, let 
@@ -42,6 +43,8 @@ The codebase should be uploaded to a Github repository and the URL shared via em
 responding to this email. The repository must contain a README.md file describing how to 
 setup/deploy the application. You may also deploy the application on a free hosting service for the 
 purpose of a demo.</p>
+    </div>
+   
 
   </div>
 </template>
@@ -67,6 +70,14 @@ purpose of a demo.</p>
     text-align: justify;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 
+  }
+  .tail-p{
+    padding: 6px;
+    margin: 7px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .spans{
     color: black;

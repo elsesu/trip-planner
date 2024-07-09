@@ -24,6 +24,8 @@
           {{ location }}
         </li>
       </VueDraggableNext>
+      <br>
+      <br>
     </div>
     <div v-else class="form-div">
       <h1 class="choose">Oops, you haven't added a destination yet 😬</h1>
@@ -32,7 +34,7 @@
 </template>
 
 <script setup>
-import { ref, watchEffect } from 'vue'
+import { ref, watchEffect, onMounted } from 'vue'
  import { useStore } from 'vuex'
   import { VueDraggableNext } from 'vue-draggable-next'
 import { computed } from 'vue'
@@ -51,17 +53,18 @@ const fetchDestinations = () => {
   }
 }
 
-const fetchLocations =()=>{
-  const storedLocations = localStorage.getItem('locations')
-  if(storedLocations){
-    locations.value = JSON.parse(storedLocations)
-  } else{
-    locations.value = []
+const fetchLocations = () => {
+  const storedLocations = localStorage.getItem('locations');
+  if (storedLocations) {
+    locations.value = JSON.parse(storedLocations);
+  } else {
+    locations.value = [];
   }
-}
+};
+
 const formattedLocations = computed(() => {
   return locations.value.map(location => {
-       return `${location.Title}: Latitude: ${location.Latitude}, Longitude: ${location.Longitude}`;
+    return `${location.Title}: Latitude: ${location.Latitude}, Longitude: ${location.Longitude}`;
   });
 });
 
@@ -76,6 +79,10 @@ watchEffect(() => {
   fetchDestinations()
   fetchLocations()
 })
+
+
+
+
 </script>
 
 <style>
