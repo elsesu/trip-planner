@@ -30,7 +30,7 @@ export const store = createStore({
     ],
     currentCountry: '',
     countries: loadFromLocalStorage(),
-    locations: loadLocationsFromLocalStorage(),
+    locations: [], // Start with an empty array
    
     polygon: [
       {
