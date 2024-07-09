@@ -66,6 +66,7 @@ const updateLocalStorage = () => {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  padding: 15px;
   margin-top: 20px;
   background: rgb(44, 168, 35);
   margin: 10px;

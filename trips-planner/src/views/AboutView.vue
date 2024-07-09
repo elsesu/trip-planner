@@ -1,6 +1,6 @@
 <template>
   <div class="form-div">
-    <div class="tail-p">
+ 
  <h1 class="choose">This is an about page</h1>
     <h1 class="text-gray-500 text-3xl font-extrabold">Road trip planner</h1>
     <p class="p-tags"> <span class="spans">Introduction</span> <br>
@@ -46,7 +46,7 @@ purpose of a demo.</p>
     </div>
    
 
-  </div>
+
 </template>
 
 <script setup>
@@ -78,11 +78,12 @@ purpose of a demo.</p>
     display: flex;
     flex-direction: column;
     align-items: center;
+  
   }
   .spans{
     color: black;
      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-font-size: 30px;
+   font-size: 30px;
   }
 }
 </style>
